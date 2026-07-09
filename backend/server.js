@@ -25,8 +25,14 @@ db.exec(`CREATE TABLE IF NOT EXISTS asistencia (
   UNIQUE(estudiante_id, fecha)
 )`);
 
+const allowedOrigins = [
+  process.env.FRONTEND_URL || 'http://localhost:3000',
+  'https://tigree21.github.io',
+  'http://localhost:3000',
+].filter(Boolean);
+
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+  origin: allowedOrigins,
   credentials: true,
 }));
 app.use(express.json());
