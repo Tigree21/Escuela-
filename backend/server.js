@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const fs = require('fs');
 require('dotenv').config();
 
 const authRoutes = require('./routes/auth');
@@ -44,13 +45,15 @@ app.get('/api/health', (req, res) => {
 });
 
 const buildPath = path.join(__dirname, '..', 'frontend', 'build');
-app.use(express.static(buildPath));
-app.get('*', (req, res) => {
-  if (req.path.startsWith('/api/')) {
-    return res.status(404).json({ message: 'Ruta no encontrada' });
-  }
-  res.sendFile(path.join(buildPath, 'index.html'));
-});
+if (fs.existsSync(buildPath)) {
+  app.use(express.static(buildPath));
+  app.get('*', (req, res) => {
+    if (req.path.startsWith('/api/')) {
+      return res.status(404).json({ message: 'Ruta no encontrada' });
+    }
+    res.sendFile(path.join(buildPath, 'index.html'));
+  });
+}
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
