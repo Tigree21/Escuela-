@@ -2,7 +2,7 @@
   "name": "hmars-armonia-musical-frontend",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://tigree21.github.io/escuela-armon-a-musical-",
+  "homepage": "https://tigree21.github.io/Escuela-",
   "dependencies": {
     "axios": "^1.6.2",
     "bootstrap": "^5.3.2",

@@ -9,7 +9,7 @@ import App from './App';
   var redirect = sessionStorage.getItem('redirect');
   if (redirect) {
     sessionStorage.removeItem('redirect');
-    var base = process.env.PUBLIC_URL || '/escuela-armon-a-musical-';
+    var base = process.env.PUBLIC_URL || '/Escuela-';
     var path = redirect.replace(base, '') || '/';
     window.history.replaceState(null, '', path);
   }
