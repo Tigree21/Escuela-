@@ -9,7 +9,6 @@ import App from './App';
   var redirect = sessionStorage.getItem('redirect');
   if (redirect) {
     sessionStorage.removeItem('redirect');
-    var base = process.env.PUBLIC_URL || '/Escuela-';
     window.history.replaceState(null, '', redirect);
   }
 })();
