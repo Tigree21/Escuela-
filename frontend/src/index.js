@@ -10,8 +10,7 @@ import App from './App';
   if (redirect) {
     sessionStorage.removeItem('redirect');
     var base = process.env.PUBLIC_URL || '/Escuela-';
-    var path = redirect.replace(base, '') || '/';
-    window.history.replaceState(null, '', path);
+    window.history.replaceState(null, '', redirect);
   }
 })();
 
